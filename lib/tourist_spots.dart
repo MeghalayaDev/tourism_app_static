@@ -5,23 +5,49 @@ class ListOfTouristSpots extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      margin: const EdgeInsets.all(8.0),
-      color: Colors.amber,
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(children: [
-          const Icon(Icons.sunny),
-          Text(
-            "Sweet Falls, Meghalaya",
-            style: Theme.of(context).textTheme.titleLarge,
+    return ListView(
+      children: <Widget>[
+        Card(
+          margin: const EdgeInsets.all(8.0),
+          child: ListTile(
+            leading: const Icon(Icons.wb_sunny),
+            iconColor: Colors.amber,
+            title: Text(
+              'Sweet Falls',
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
+            subtitle:
+                const Text('This is a waterfall in the city of Meghalaya'),
+            onTap: () => print("Sweet Falls Pressed"),
           ),
-          const Text(
-            "This waterfall is in the capital city of Meghalaya, it is a beautiful waterfall",
-            textAlign: TextAlign.center,
-          )
-        ]),
-      ),
+        ),
+        Card(
+          margin: const EdgeInsets.all(8.0),
+          child: ListTile(
+            leading: const Icon(Icons.brightness_3),
+            title: Text(
+              'Laitlum Canyon',
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
+            subtitle:
+                const Text('A small yet breath taking canyon in Meghalaya'),
+            onTap: () => print("Laitlum Canyon Pressed"),
+          ),
+        ),
+        Card(
+          margin: const EdgeInsets.all(8.0),
+          child: ListTile(
+            leading: const Icon(Icons.star),
+            iconColor: Colors.blue,
+            title: Text(
+              'Mawsmai Cave',
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
+            subtitle: const Text('A cave in Sohra'),
+            onTap: () => print("Mawsmai Cave Pressed"),
+          ),
+        ),
+      ],
     );
   }
 }

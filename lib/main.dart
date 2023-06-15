@@ -47,7 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
             'Welcome to our beautiful Meghalaya!',
             textAlign: TextAlign.center,
           ),
-          ListOfTouristSpots(),
+          Expanded(child: ListOfTouristSpots()),
         ],
       ),
     );
