@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 
 class SpotDetails extends StatelessWidget {
-  final String spotName;
-  const SpotDetails({super.key, required this.spotName});
+  final String spotName, spotDesc, spotImage;
+  const SpotDetails(
+      {super.key,
+      required this.spotName,
+      required this.spotDesc,
+      required this.spotImage});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-          title: Text("Tourism App"),
+          title: const Text("Tourism App"),
           automaticallyImplyLeading: true, //code for back button
           leading: IconButton(
               icon: const Icon(Icons.arrow_back),
@@ -20,11 +24,19 @@ class SpotDetails extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         // mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
-          const Text(
-            'Welcome to our second Page!',
-            textAlign: TextAlign.center,
-          ),
-          Text(spotName),
+          Image.asset("assets/images/$spotImage"),
+          Container(
+              padding: const EdgeInsets.all(5.0),
+              child: Column(
+                children: [
+                  const Text(
+                    'Welcome to:',
+                    textAlign: TextAlign.center,
+                  ),
+                  Text(spotName),
+                  Text(spotDesc),
+                ],
+              )),
         ],
       ),
     );

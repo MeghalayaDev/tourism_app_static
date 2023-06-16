@@ -6,52 +6,51 @@ class ListOfTouristSpots extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: <Widget>[
-        Card(
-          margin: const EdgeInsets.all(8.0),
-          child: ListTile(
-            leading: const Icon(Icons.wb_sunny),
-            iconColor: Colors.amber,
-            title: Text(
-              'Sweet Falls',
-              style: Theme.of(context).textTheme.titleLarge,
+    final List<String> names = [
+      "Sweet Falls",
+      "Mawsmai Cave",
+      "Laitlum Canyon"
+    ];
+
+    final List<String> shortDesc = [
+      "This is a waterfall in the city of Meghalaya.",
+      "A cave in Sohra",
+      "A small yet breath taking canyon in Meghalaya"
+    ];
+
+    final List<String> spotImage = [
+      "sweetfalls.webp",
+      "mawsmaicave.jpeg",
+      "laitlumcanyon.webp",
+    ];
+
+    return ListView.builder(
+      itemCount: 3, // the length
+      itemBuilder: (context, index) {
+        return Container(
+          padding: const EdgeInsets.only(bottom: 8),
+          child: GestureDetector(
+            child: Card(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  Image.asset("assets/images/${spotImage[index]}"),
+                  ListTile(
+                    title: Text(names[index]),
+                    subtitle: Text(shortDesc[index]),
+                  ),
+                ],
+              ),
             ),
-            subtitle:
-                const Text('This is a waterfall in the city of Meghalaya'),
-            onTap: () => print("Sweet Falls Pressed"),
-          ),
-        ),
-        Card(
-          margin: const EdgeInsets.all(8.0),
-          child: ListTile(
-            leading: const Icon(Icons.brightness_3),
-            title: Text(
-              'Laitlum Canyon',
-              style: Theme.of(context).textTheme.titleLarge,
-            ),
-            subtitle:
-                const Text('A small yet breath taking canyon in Meghalaya'),
-            onTap: () => print("Laitlum Canyon Pressed"),
-          ),
-        ),
-        Card(
-          margin: const EdgeInsets.all(8.0),
-          child: ListTile(
-            leading: const Icon(Icons.star),
-            iconColor: Colors.blue,
-            title: Text(
-              'Mawsmai Cave',
-              style: Theme.of(context).textTheme.titleLarge,
-            ),
-            subtitle: const Text('A cave in Sohra'),
-            // onTap: () => Navigator.pushNamed(context, '/second'),
             onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                builder: (BuildContext context) =>
-                    const SpotDetails(spotName: "Cave"))),
+                builder: (BuildContext) => SpotDetails(
+                      spotName: names[index],
+                      spotDesc: shortDesc[index],
+                      spotImage: spotImage[index],
+                    ))),
           ),
-        ),
-      ],
+        );
+      },
     );
   }
 }

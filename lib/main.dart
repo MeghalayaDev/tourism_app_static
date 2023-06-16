@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tourism_app_static/spot_details.dart';
 import 'package:tourism_app_static/tourist_spots.dart';
 
 void main() {
@@ -44,16 +43,19 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
       ),
-      body: const Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        // mainAxisAlignment: MainAxisAlignment.start,
-        children: <Widget>[
-          Text(
-            'Welcome to our beautiful Meghalaya!',
-            textAlign: TextAlign.center,
-          ),
-          Expanded(child: ListOfTouristSpots()),
-        ],
+      body: Container(
+        color: Colors.yellow[100],
+        child: const Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          // mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            Text(
+              'Welcome to our beautiful Meghalaya!',
+              textAlign: TextAlign.center,
+            ),
+            Expanded(child: ListOfTouristSpots()),
+          ],
+        ),
       ),
     );
   }
