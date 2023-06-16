@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tourism_app_static/spot_details.dart';
 import 'package:tourism_app_static/tourist_spots.dart';
 
 void main() {
@@ -18,6 +19,10 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: const MyHomePage(title: 'Tourism App'),
+      initialRoute: '/',
+      // routes: {
+      //   '/second': (context) => const SpotDetails(),
+      // }
     );
   }
 }

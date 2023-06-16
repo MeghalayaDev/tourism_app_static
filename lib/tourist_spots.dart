@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tourism_app_static/spot_details.dart';
 
 class ListOfTouristSpots extends StatelessWidget {
   const ListOfTouristSpots({super.key});
@@ -44,7 +45,10 @@ class ListOfTouristSpots extends StatelessWidget {
               style: Theme.of(context).textTheme.titleLarge,
             ),
             subtitle: const Text('A cave in Sohra'),
-            onTap: () => print("Mawsmai Cave Pressed"),
+            // onTap: () => Navigator.pushNamed(context, '/second'),
+            onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                builder: (BuildContext context) =>
+                    const SpotDetails(spotName: "Cave"))),
           ),
         ),
       ],
