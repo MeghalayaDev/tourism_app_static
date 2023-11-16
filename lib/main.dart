@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tourism_app_static/tourist_spots.dart';
+import 'package:flutter/services.dart';
+import 'package:tourism_app_static/pages/tourist_spots.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +15,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
+        colorScheme: ColorScheme.fromSeed(
+            seedColor: const Color.fromARGB(255, 169, 169, 169)),
         useMaterial3: true,
       ),
       home: const MyHomePage(title: 'Tourism App'),
@@ -37,25 +39,18 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   @override
+  void initState() {
+    super.initState();
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+        overlays: [SystemUiOverlay.bottom]);
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
       body: Container(
-        color: Colors.yellow[100],
-        child: const Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          // mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            Text(
-              'Welcome to our beautiful Meghalaya!',
-              textAlign: TextAlign.center,
-            ),
-            Expanded(child: ListOfTouristSpots()),
-          ],
-        ),
+        color: const Color.fromARGB(255, 255, 255, 255),
+        child: const ListOfTouristSpots(),
       ),
     );
   }
